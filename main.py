@@ -131,7 +131,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     # 获取在一起的日期差
     love_days = str(today.__sub__(love_date)).split(" ")[0]
     # 获取奔现的时间差
-    benxian_days=str(-today.__sub__(benxian_date)).split(" ")[0]
+    benxian_days=str(today.__sub__(benxian_date)).split(" ")[0]
     # 获取所有生日数据
     birthdays = {}
     for k, v in config.items():
