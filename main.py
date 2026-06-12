@@ -128,10 +128,19 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     benxian_day = int(config["benxian_date"].split("-")[2])
     benxian_date = date(benxian_year, benxian_month, benxian_day)
 
+    # arrive_beijing_date 朱去北京的日期
+    arrive_beijing_year = int(config["arrive_beijing_date"].split("-")[0])
+    arrive_beijing_month = int(config["arrive_beijing_date"].split("-")[1])
+    arrive_beijing_day = int(config["arrive_beijing_date"].split("-")[2])
+    arrive_beijing_date = date(arrive_beijing_year, arrive_beijing_month, arrive_beijing_day)   
+
     # 获取在一起的日期差
     love_days = str(today.__sub__(love_date)).split(" ")[0]
     # 获取奔现的时间差
     benxian_days=str(today.__sub__(benxian_date)).split(" ")[0]
+    # 获取朱去北京的时间差
+    arrive_beijing_days=str(today.__sub__(arrive_beijing_date)).split(" ")[0]
+    
     # 获取所有生日数据
     birthdays = {}
     for k, v in config.items():
@@ -169,6 +178,10 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
             },
             "benxian": {
                 "value": benxian_days,
+                "color": get_color()
+            },
+            "arrive_beijing": {
+                "value": arrive_beijing_days,
                 "color": get_color()
             },
             "note_en": {
