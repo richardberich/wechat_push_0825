@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   schedule: 
     # 每天北京时间上午7点运行
-    - cron: '30 7 * * *'
+    - cron: '40 15 * * *'
       timezone: "Asia/Shanghai"
 jobs:
 #将工作流程中运行的所有作业组合在一起
