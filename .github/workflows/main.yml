@@ -2,8 +2,8 @@ name: weixin
 on:
   workflow_dispatch:
   schedule: 
-    # 每天北京时间上午5点30分运行，避开GitHub Actions整点调度高峰
-    - cron: '30 5 * * *'
+    # 每天北京时间上午7点运行
+    - cron: '0 7 * * *'
       timezone: "Asia/Shanghai"
 jobs:
 #将工作流程中运行的所有作业组合在一起
