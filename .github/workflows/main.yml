@@ -2,13 +2,16 @@ name: weixin
 on:
   workflow_dispatch:
   schedule: 
-    # 代表国际标准时间21点30分，北京时间需要+8小时，代表北京时间上午5点30分点运行
-    - cron: '0 1 * * *'
+    # 每天北京时间上午5点30分运行，避开GitHub Actions整点调度高峰
+    - cron: '30 5 * * *'
+      timezone: "Asia/Shanghai"
 jobs:
 #将工作流程中运行的所有作业组合在一起
   build:
   #定义名为 build 的作业。 子键将定义作业的属性 
     runs-on: ubuntu-latest 
+    env:
+      TZ: Asia/Shanghai
     steps:
       - uses: actions/checkout@v2
     
@@ -18,7 +21,7 @@ jobs:
           python-version: 3.10.6
       - name: Set timezone
         run: |
-          cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+          date
       - name: install pip packages
         run: |
           python -m pip install --upgrade pip
