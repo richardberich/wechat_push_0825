@@ -139,7 +139,7 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
     # 获取奔现的时间差
     benxian_days=str(today.__sub__(benxian_date)).split(" ")[0]
     # 获取朱去北京的时间差
-    arrive_beijing_days=str(today.__sub__(arrive_beijing_date)).split(" ")[0]+1
+    arrive_beijing_days = str((today - arrive_beijing_date).days + 1)
     
     # 获取所有生日数据
     birthdays = {}
